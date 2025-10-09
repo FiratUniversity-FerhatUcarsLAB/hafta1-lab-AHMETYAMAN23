@@ -1,4 +1,40 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541014
+AD-SOYAD: AHMET YAMAN 
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Girdi:
+  kaynak_renkler = [R1, R2, R3, ..., Rn]     # her biri (R, G, B)
+  hedef_renk = (Rt, Gt, Bt)
+  adim_sayisi = 100                          # deneme sayısı (isteğe bağlı)
+
+Fonksiyon RenkKaristir(kaynak_renkler, agirliklar):
+    toplam = (0, 0, 0)
+    for i = 1 to n:
+        toplam.R += kaynak_renkler[i].R * agirliklar[i]
+        toplam.G += kaynak_renkler[i].G * agirliklar[i]
+        toplam.B += kaynak_renkler[i].B * agirliklar[i]
+    return toplam
+
+Fonksiyon RenkFarki(renk1, renk2):
+    fark = sqrt( (renk1.R - renk2.R)^2 +
+                 (renk1.G - renk2.G)^2 +
+                 (renk1.B - renk2.B)^2 )
+    return fark
+
+Algoritma HedefRengiBul():
+    en_iyi_agirliklar = [0, 0, ..., 0]
+    en_iyi_fark = sonsuz
+
+    # Tüm olası ağırlık kombinasyonlarını dene (basit yaklaşım)
+    for her olası agirliklar dizisi:
+        eğer sum(agirliklar) == 1 ve tüm agirliklar >= 0 ise:
+            karisim = RenkKaristir(kaynak_renkler, agirliklar)
+            fark = RenkFarki(karisim, hedef_renk)
+
+            eğer fark < en_iyi_fark ise:
+                en_iyi_fark = fark
+                en_iyi_agirliklar = agirliklar
+
+    çıktı "En iyi karışım oranları:", en_iyi_agirliklar
+    çıktı "Elde edilen renk:", RenkKaristir(kaynak_renkler, en_iyi_agirliklar)
+    çıktı "Hedefe uzaklık:", en_iyi_fark
