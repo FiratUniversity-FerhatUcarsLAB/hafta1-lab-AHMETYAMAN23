@@ -1,4 +1,73 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541014
+AD-SOYAD:AHMET YAMAN 
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+ALGORİTMA FotoğraftanMetinBelgesine(fotoğraf_dosyası, hedef_format)
+
+1.  FOTOĞRAFI YÜKLE
+    görüntü ← fotoğraf_dosyası oku
+    eğer görüntü boş ise
+        ekrana_yaz("Fotoğraf bulunamadı!")
+        dur
+
+2.  GÖRÜNTÜYÜ ÖN İŞLE
+    # Fotoğrafı daha okunur hale getir
+    gri_görüntü ← gri_ton_yap(görüntü)
+    net_görüntü ← parazit_temizle(gri_görüntü)
+    kontrastlı ← kontrast_arttır(net_görüntü)
+    düzgün_görüntü ← eğikliği_düzelt(kontrastlı)
+    hazır_görüntü ← düzgün_görüntü
+
+3.  METNİ OKU (OCR)
+    # OCR: Optik Karakter Tanıma işlemi
+    tanınan_metin ← OCR(hazır_görüntü)
+
+    eğer tanınan_metin boş ise
+        ekrana_yaz("Metin okunamadı!")
+        dur
+
+4.  METNİ DÜZENLE
+    # OCR bazen hatalı karakterler üretir
+    temiz_metin ← gereksiz_boşlukları_sil(tanınan_metin)
+    temiz_metin ← satır_sonlarını_düzelt(temiz_metin)
+    temiz_metin ← yazım_hatalarını_düzelt(temiz_metin)
+
+5.  METNİ BİÇİMLENDİR
+    # Metni paragraflara ve satırlara ayır
+    paragraflar ← metni_paragraflara_ayır(temiz_metin)
+    başlıklar ← başlık_tespiti(paragraflar)
+    tablolar ← tablo_varsa_ayır(paragraflar)
+
+6.  KULLANICININ İSTEDİĞİ FORMATA GÖRE DOSYA OLUŞTUR
+
+    EĞER hedef_format == "word" İSE
+        belge ← yeni WordBelgesiOluştur()
+        belgeye_başlık_ekle("OCR ile dönüştürülen metin")
+        HER paragraf İÇİN
+            belgeye_paragraf_ekle(paragraf)
+        belgeyi_kaydet("çıktı.docx")
+
+    DEĞİLSE EĞER hedef_format == "excel" İSE
+        tablo ← yeni ExcelSayfasıOluştur()
+        satır_numarası ← 1
+        HER satır İÇİN
+            tabloya_yaz(satır_numarası, 1, satır)
+            satır_numarası ← satır_numarası + 1
+        tabloyu_kaydet("çıktı.xlsx")
+
+    DEĞİLSE EĞER hedef_format == "powerpoint" İSE
+        sunu ← yeni SunumOluştur()
+        ilk_slayt ← yeni SlaytOluştur(sunu)
+        ilk_slayta_başlık_ekle("Fotoğraftan Okunan Metin")
+        HER paragraf İÇİN
+            slayta_metni_ekle(paragraf)
+        sunuyu_kaydet("çıktı.pptx")
+
+    DEĞİLSE
+        ekrana_yaz("Geçersiz format seçildi!")
+
+7.  KULLANICIYA MESAJ GÖSTER
+    ekrana_yaz("Belge başarıyla oluşturuldu!")
+    ekrana_yaz("Kaydedilen dosya: çıktı." + hedef_format)
+
+SON ALGORİTMA
