@@ -2,3 +2,59 @@
 AD-SOYAD:
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+ALGORITMA MukemmelOmletYap()
+
+    // 1. Malzemeleri Hazırla
+    Girdi al: Yumurta_sayısı, Tuz_miktarı, Karabiber_miktarı, Süt_miktarı, Yağ_türü, İçerik_listesi
+    Kasen = boş kase oluştur
+    Çırpıcı = çırpma teli veya çatal seç
+
+    // 2. Yumurta Karışımını Hazırla
+    DÖNGÜ i = 1'dan Yumurta_sayısı'na kadar
+        Kasen'e 1 adet yumurta kır
+    DÖNGÜ SONU
+
+    Kasen'e Tuz_miktarı, Karabiber_miktarı, Süt_miktarı ekle
+    Eğer İçerik_listesi içinde taze otlar varsa:
+        onları da Kasen'e ekle
+
+    // 3. Homojen Karışım Elde Et
+    Yumurtaları 30–60 saniye boyunca güçlü şekilde çırp
+    EĞER karışım homojen VE hafif köpüklü ise:
+        DEVAM ET
+    DEĞİLSE:
+        15 saniye daha çırp
+
+    // 4. Tava ve Yağı Hazırla
+    Tava = seçilen Tava_tipi
+    Tavayı orta ateşte ısıt
+    Tavaya 1 tatlı kaşığı kadar Yağ_türü ekle
+    Yağ tamamen eriyene kadar ısıt
+    EĞER yağ hafif cızırdıyor ama duman çıkmıyorsa:
+        Devam et
+    DEĞİLSE EĞER duman çıkıyorsa:
+        Ateşi biraz kıs
+
+    // 5. Pişirme Aşaması
+    Karışımı Tavaya dök
+    5 saniye boyunca karıştırmadan bekle
+    Kenarlar pişmeye başlayınca:
+        Spatula ile kenarları ortaya doğru it
+        Ortadaki sıvı yumurta kenarlara yayılsın
+        Bu işlemi 2–3 kez tekrarla
+
+    // 6. İç Malzemeleri Ekle (opsiyonel)
+    EĞER İçerik_listesi boş değilse:
+        İçerikleri omletin bir yarısına eşit şekilde serp
+
+    // 7. Katlama ve Son Pişirme
+    Alt yüzey altın rengi olduğunda:
+        Omleti spatula ile ikiye katla
+        10–20 saniye daha pişir (isteğe bağlı olarak yumuşak ya da tam pişmiş)
+
+    // 8. Servis Et
+    Omleti tabak üzerine dikkatlice al
+    Üzerine istenirse biraz taze ot veya peynir serpilebilir
+    Sonuç: Mükemmel dokuda, lezzetli omlet
+
+SON ALGORITMA
